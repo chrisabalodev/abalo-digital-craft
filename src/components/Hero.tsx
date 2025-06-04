@@ -1,5 +1,6 @@
 
 import { ArrowRight, Code, Palette, Users, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -26,9 +27,12 @@ const Hero = () => {
               Découvrir nos services
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all transform hover:scale-105 hover:-translate-y-1">
+            <Link 
+              to="/portfolio"
+              className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center"
+            >
               Voir nos réalisations
-            </button>
+            </Link>
           </div>
 
           {/* Features Grid */}
