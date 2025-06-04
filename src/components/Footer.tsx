@@ -22,11 +22,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone size={16} className="mr-3" />
-                +33 1 23 45 67 89
+                +228 96 95 50 44
               </div>
               <div className="flex items-center text-gray-300">
                 <MapPin size={16} className="mr-3" />
-                Paris, France
+                Lomé, Togo
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-300">
               <li><a href="#apropos" className="hover:text-blue-400 transition-colors">À propos</a></li>
               <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Réalisations</a></li>
+              <li><a href="/terms-and-conditions" className="hover:text-blue-400 transition-colors">Conditions Générales</a></li>
               <li><a href="#" className="hover:text-blue-400 transition-colors">Blog</a></li>
             </ul>
           </div>
@@ -61,7 +61,7 @@ const Footer = () => {
               © 2024 abalo.dev. Tous droits réservés.
             </div>
             <div className="flex items-center text-gray-400 text-sm">
-              Fait avec <Heart size={16} className="mx-2 text-red-500" /> à Paris
+              Fait avec <Heart size={16} className="mx-2 text-red-500" /> au Togo
             </div>
           </div>
           
