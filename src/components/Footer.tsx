@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin, Heart } from 'lucide-react';
 
 const Footer = () => {
@@ -18,7 +17,7 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center text-gray-300">
                 <Mail size={16} className="mr-3" />
-                contact@abalo.dev
+                abalo.dev.w@proton.me
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone size={16} className="mr-3" />

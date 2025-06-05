@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -137,7 +136,7 @@ const PrivacyPolicy = () => {
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
                 <p>Pour exercer vos droits ou pour toute question concernant cette politique :</p>
                 <div className="mt-4 space-y-2">
-                  <p><strong>Email :</strong> contact@abalo.dev</p>
+                  <p><strong>Email :</strong> abalo.dev.w@proton.me</p>
                   <p><strong>Téléphone :</strong> +228 96 95 50 44</p>
                   <p><strong>Adresse :</strong> Lomé, Togo</p>
                 </div>

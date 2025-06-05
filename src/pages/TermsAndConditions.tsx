@@ -46,7 +46,7 @@ const TermsAndConditions = () => {
                 <p><strong>Nom de l'entreprise :</strong> abalo.dev</p>
                 <p><strong>Adresse :</strong> Lomé, Togo</p>
                 <p><strong>Téléphone :</strong> +228 96 95 50 44</p>
-                <p><strong>Email :</strong> contact@abalo.dev</p>
+                <p><strong>Email :</strong> abalo.dev.w@proton.me</p>
                 <p><strong>Site web :</strong> https://abalo.dev</p>
               </div>
             </section>
@@ -149,7 +149,7 @@ const TermsAndConditions = () => {
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
                 <p>Pour toute question concernant ces conditions générales, contactez-nous :</p>
                 <div className="mt-4 space-y-2">
-                  <p><strong>Email :</strong> contact@abalo.dev</p>
+                  <p><strong>Email :</strong> abalo.dev.w@proton.me</p>
                   <p><strong>Téléphone :</strong> +228 96 95 50 44</p>
                   <p><strong>Adresse :</strong> Lomé, Togo</p>
                 </div>
