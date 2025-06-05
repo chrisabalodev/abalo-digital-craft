@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -47,7 +46,7 @@ const TermsAndConditions = () => {
                 <p><strong>Adresse :</strong> Lomé, Togo</p>
                 <p><strong>Téléphone :</strong> +228 96 95 50 44</p>
                 <p><strong>Email :</strong> abalo.dev.w@proton.me</p>
-                <p><strong>Site web :</strong> https://abalo.dev</p>
+                <p><strong>Site web :</strong> https://abalodev.netlify.app</p>
               </div>
             </section>
 
