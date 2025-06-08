@@ -1,5 +1,5 @@
 
-import { ArrowLeft, Check, Star, Zap, Shield, Clock } from 'lucide-react';
+import { ArrowLeft, Check, Star, Zap, Shield, Clock, Globe, Package } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,8 +9,10 @@ const Pricing = () => {
   const subscriptionPlans = [
     {
       name: "Starter",
-      price: "29€",
+      monthlyPrice: "29€",
+      annualPrice: "290€",
       period: "/mois",
+      annualPeriod: "/an",
       description: "Parfait pour les petites entreprises qui démarrent",
       features: [
         "Site web responsive jusqu'à 5 pages",
@@ -26,8 +28,10 @@ const Pricing = () => {
     },
     {
       name: "Professional",
-      price: "79€",
+      monthlyPrice: "79€",
+      annualPrice: "790€",
       period: "/mois",
+      annualPeriod: "/an",
       description: "Idéal pour les entreprises en croissance",
       features: [
         "Site web responsive jusqu'à 15 pages",
@@ -45,8 +49,10 @@ const Pricing = () => {
     },
     {
       name: "Enterprise",
-      price: "149€",
+      monthlyPrice: "149€",
+      annualPrice: "1490€",
       period: "/mois",
+      annualPeriod: "/an",
       description: "Pour les grandes entreprises avec des besoins complexes",
       features: [
         "Site web illimité",
@@ -117,6 +123,65 @@ const Pricing = () => {
     }
   ];
 
+  const completePacks = [
+    {
+      name: "Pack Essentiel",
+      price: "1 200€",
+      period: "forfait unique",
+      description: "Solution complète pour démarrer votre présence en ligne",
+      features: [
+        "Recherche et achat de nom de domaine",
+        "Site web responsive jusqu'à 5 pages",
+        "Design personnalisé",
+        "Configuration hébergement",
+        "Certificat SSL inclus",
+        "Mise en ligne complète",
+        "Formation à la gestion de base",
+        "1 mois de support inclus"
+      ],
+      icon: <Globe className="h-6 w-6" />,
+      popular: false
+    },
+    {
+      name: "Pack Business",
+      price: "2 500€",
+      period: "forfait unique",
+      description: "Solution professionnelle avec suivi complet",
+      features: [
+        "Tout du Pack Essentiel",
+        "Site web jusqu'à 15 pages",
+        "Design avancé et sur mesure",
+        "Optimisation SEO complète",
+        "Intégration e-commerce (si besoin)",
+        "Analytics et outils de suivi",
+        "Formation approfondie",
+        "3 mois de support inclus",
+        "1 révision majeure incluse"
+      ],
+      icon: <Package className="h-6 w-6" />,
+      popular: true
+    },
+    {
+      name: "Pack Premium",
+      price: "4 500€",
+      period: "forfait unique",
+      description: "Solution haut de gamme avec accompagnement personnalisé",
+      features: [
+        "Tout du Pack Business",
+        "Site web complexe (pages illimitées)",
+        "Développement sur mesure",
+        "Intégrations API personnalisées",
+        "E-commerce avancé",
+        "Formation équipe complète",
+        "Stratégie digitale incluse",
+        "6 mois de support premium",
+        "Révisions illimitées pendant 3 mois"
+      ],
+      icon: <Star className="h-6 w-6" />,
+      popular: false
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Header */}
@@ -144,8 +209,8 @@ const Pricing = () => {
             Tarifs & Abonnements
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-            Choisissez la solution qui correspond à vos besoins. Des abonnements flexibles 
-            pour votre site web et des services de maintenance professionnels.
+            Choisissez la solution qui correspond à vos besoins. Des abonnements flexibles, 
+            des services de maintenance professionnels ou des packs complets clés en main.
           </p>
         </div>
       </section>
@@ -154,7 +219,7 @@ const Pricing = () => {
       <section className="pb-20">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="subscriptions" className="max-w-7xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 mb-12 max-w-md mx-auto">
+            <TabsList className="grid w-full grid-cols-3 mb-12 max-w-2xl mx-auto">
               <TabsTrigger value="subscriptions" className="flex items-center gap-2">
                 <Clock size={16} />
                 Abonnements
@@ -163,10 +228,24 @@ const Pricing = () => {
                 <Shield size={16} />
                 Maintenance
               </TabsTrigger>
+              <TabsTrigger value="packs" className="flex items-center gap-2">
+                <Package size={16} />
+                Packs Complets
+              </TabsTrigger>
             </TabsList>
 
             {/* Subscription Plans */}
             <TabsContent value="subscriptions">
+              <div className="mb-8 text-center">
+                <div className="inline-flex items-center bg-gray-100 rounded-lg p-1">
+                  <button className="px-4 py-2 rounded-md bg-white shadow-sm text-gray-900 font-medium">
+                    Mensuel
+                  </button>
+                  <button className="px-4 py-2 text-gray-600">
+                    Annuel <span className="text-green-600 font-semibold">(-20%)</span>
+                  </button>
+                </div>
+              </div>
               <div className="grid md:grid-cols-3 gap-8">
                 {subscriptionPlans.map((plan, index) => (
                   <Card key={index} className={`relative ${plan.popular ? 'border-blue-500 shadow-lg scale-105' : ''}`}>
@@ -180,8 +259,11 @@ const Pricing = () => {
                     <CardHeader className="text-center pb-6">
                       <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-4xl font-bold text-blue-600">{plan.price}</span>
+                        <span className="text-4xl font-bold text-blue-600">{plan.monthlyPrice}</span>
                         <span className="text-gray-500">{plan.period}</span>
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        ou {plan.annualPrice}{plan.annualPeriod}
                       </div>
                       <CardDescription className="text-base">{plan.description}</CardDescription>
                     </CardHeader>
@@ -241,6 +323,52 @@ const Pricing = () => {
                 ))}
               </div>
             </TabsContent>
+
+            {/* Complete Packs */}
+            <TabsContent value="packs">
+              <div className="grid md:grid-cols-3 gap-8">
+                {completePacks.map((pack, index) => (
+                  <Card key={index} className={`relative hover:shadow-lg transition-shadow ${pack.popular ? 'border-blue-500 shadow-lg scale-105' : ''}`}>
+                    {pack.popular && (
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                          Le plus choisi
+                        </span>
+                      </div>
+                    )}
+                    <CardHeader className="text-center pb-6">
+                      <div className="flex justify-center mb-4">
+                        <div className="p-3 bg-blue-100 rounded-full text-blue-600">
+                          {pack.icon}
+                        </div>
+                      </div>
+                      <CardTitle className="text-2xl font-bold">{pack.name}</CardTitle>
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-4xl font-bold text-blue-600">{pack.price}</span>
+                      </div>
+                      <div className="text-sm text-gray-500">{pack.period}</div>
+                      <CardDescription className="text-base">{pack.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-3 mb-8">
+                        {pack.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start gap-3">
+                            <Check size={16} className="text-green-500 mt-1 flex-shrink-0" />
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button 
+                        className={`w-full ${pack.popular ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-lg' : ''}`}
+                        variant={pack.popular ? 'default' : 'outline'}
+                      >
+                        Choisir ce pack
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
           </Tabs>
         </div>
       </section>
@@ -271,11 +399,11 @@ const Pricing = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Que se passe-t-il si j'annule mon abonnement ?
+                  Que comprend le suivi complet des packs ?
                 </h3>
                 <p className="text-gray-600">
-                  Votre site reste accessible jusqu'à la fin de la période payée. 
-                  Nous vous fournirons une copie de votre site si nécessaire.
+                  Nous nous occupons de tout : de la recherche du nom de domaine parfait 
+                  jusqu'à la mise en ligne de votre site, avec formation incluse.
                 </p>
               </div>
               <div>
