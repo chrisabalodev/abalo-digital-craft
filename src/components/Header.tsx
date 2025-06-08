@@ -19,6 +19,7 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#accueil" className="text-gray-700 hover:text-blue-600 transition-colors">Accueil</a>
             <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+            <a href="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors">Tarifs</a>
             <a href="#apropos" className="text-gray-700 hover:text-blue-600 transition-colors">À propos</a>
             <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
             <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all">
@@ -41,6 +42,7 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <a href="#accueil" className="text-gray-700 hover:text-blue-600 transition-colors" onClick={toggleMenu}>Accueil</a>
               <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors" onClick={toggleMenu}>Services</a>
+              <a href="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors" onClick={toggleMenu}>Tarifs</a>
               <a href="#apropos" className="text-gray-700 hover:text-blue-600 transition-colors" onClick={toggleMenu}>À propos</a>
               <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors" onClick={toggleMenu}>Contact</a>
               <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg w-fit">
