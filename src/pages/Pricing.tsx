@@ -4,15 +4,18 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useState } from 'react';
 
 const Pricing = () => {
+  const [isAnnual, setIsAnnual] = useState(false);
+
   const subscriptionPlans = [
     {
       name: "Starter",
-      monthlyPrice: "29€",
-      annualPrice: "290€",
-      period: "/mois",
-      annualPeriod: "/an",
+      monthlyPrice: "14 500",
+      annualPrice: "145 000",
+      period: " CFA/mois",
+      annualPeriod: " CFA/an",
       description: "Parfait pour les petites entreprises qui démarrent",
       features: [
         "Site web responsive jusqu'à 5 pages",
@@ -28,10 +31,10 @@ const Pricing = () => {
     },
     {
       name: "Professional",
-      monthlyPrice: "79€",
-      annualPrice: "790€",
-      period: "/mois",
-      annualPeriod: "/an",
+      monthlyPrice: "39 500",
+      annualPrice: "395 000",
+      period: " CFA/mois",
+      annualPeriod: " CFA/an",
       description: "Idéal pour les entreprises en croissance",
       features: [
         "Site web responsive jusqu'à 15 pages",
@@ -49,10 +52,10 @@ const Pricing = () => {
     },
     {
       name: "Enterprise",
-      monthlyPrice: "149€",
-      annualPrice: "1490€",
-      period: "/mois",
-      annualPeriod: "/an",
+      monthlyPrice: "74 500",
+      annualPrice: "745 000",
+      period: " CFA/mois",
+      annualPeriod: " CFA/an",
       description: "Pour les grandes entreprises avec des besoins complexes",
       features: [
         "Site web illimité",
@@ -74,8 +77,8 @@ const Pricing = () => {
   const maintenancePlans = [
     {
       name: "Maintenance Basic",
-      price: "49€",
-      period: "/mois",
+      price: "24 500",
+      period: " CFA/mois",
       description: "Maintenance essentielle pour votre site web",
       features: [
         "Mises à jour de sécurité",
@@ -89,8 +92,8 @@ const Pricing = () => {
     },
     {
       name: "Maintenance Pro",
-      price: "99€",
-      period: "/mois",
+      price: "49 500",
+      period: " CFA/mois",
       description: "Maintenance complète avec optimisations",
       features: [
         "Toutes les fonctionnalités Basic",
@@ -106,8 +109,8 @@ const Pricing = () => {
     },
     {
       name: "Maintenance Premium",
-      price: "199€",
-      period: "/mois",
+      price: "99 500",
+      period: " CFA/mois",
       description: "Service complet avec développement continu",
       features: [
         "Toutes les fonctionnalités Pro",
@@ -126,8 +129,8 @@ const Pricing = () => {
   const completePacks = [
     {
       name: "Pack Essentiel",
-      price: "1 200€",
-      period: "forfait unique",
+      price: "600 000",
+      period: " CFA forfait unique",
       description: "Solution complète pour démarrer votre présence en ligne",
       features: [
         "Recherche et achat de nom de domaine",
@@ -144,8 +147,8 @@ const Pricing = () => {
     },
     {
       name: "Pack Business",
-      price: "2 500€",
-      period: "forfait unique",
+      price: "1 250 000",
+      period: " CFA forfait unique",
       description: "Solution professionnelle avec suivi complet",
       features: [
         "Tout du Pack Essentiel",
@@ -163,8 +166,8 @@ const Pricing = () => {
     },
     {
       name: "Pack Premium",
-      price: "4 500€",
-      period: "forfait unique",
+      price: "2 250 000",
+      period: " CFA forfait unique",
       description: "Solution haut de gamme avec accompagnement personnalisé",
       features: [
         "Tout du Pack Business",
@@ -238,10 +241,20 @@ const Pricing = () => {
             <TabsContent value="subscriptions">
               <div className="mb-8 text-center">
                 <div className="inline-flex items-center bg-gray-100 rounded-lg p-1">
-                  <button className="px-4 py-2 rounded-md bg-white shadow-sm text-gray-900 font-medium">
+                  <button 
+                    className={`px-4 py-2 rounded-md font-medium transition-all ${
+                      !isAnnual ? 'bg-white shadow-sm text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                    onClick={() => setIsAnnual(false)}
+                  >
                     Mensuel
                   </button>
-                  <button className="px-4 py-2 text-gray-600">
+                  <button 
+                    className={`px-4 py-2 rounded-md font-medium transition-all ${
+                      isAnnual ? 'bg-white shadow-sm text-gray-900' : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                    onClick={() => setIsAnnual(true)}
+                  >
                     Annuel <span className="text-green-600 font-semibold">(-20%)</span>
                   </button>
                 </div>
@@ -259,12 +272,18 @@ const Pricing = () => {
                     <CardHeader className="text-center pb-6">
                       <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
                       <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-4xl font-bold text-blue-600">{plan.monthlyPrice}</span>
-                        <span className="text-gray-500">{plan.period}</span>
+                        <span className="text-4xl font-bold text-blue-600">
+                          {isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                        </span>
+                        <span className="text-gray-500">
+                          {isAnnual ? plan.annualPeriod : plan.period}
+                        </span>
                       </div>
-                      <div className="text-sm text-gray-500">
-                        ou {plan.annualPrice}{plan.annualPeriod}
-                      </div>
+                      {!isAnnual && (
+                        <div className="text-sm text-gray-500">
+                          ou {plan.annualPrice}{plan.annualPeriod}
+                        </div>
+                      )}
                       <CardDescription className="text-base">{plan.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
