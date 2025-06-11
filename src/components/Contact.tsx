@@ -1,4 +1,7 @@
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+
+import { Mail, Phone, MapPin } from 'lucide-react';
+import ContactForm from './ContactForm';
+import AppointmentForm from './AppointmentForm';
 
 const Contact = () => {
   return (
@@ -14,7 +17,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
           {/* Contact Info */}
           <div className="animate-slide-in-left">
             <h3 className="text-2xl font-bold mb-8 text-gray-900">Parlons de votre projet</h3>
@@ -64,63 +67,13 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="animate-slide-in-right">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="transform hover:scale-105 transition-all duration-300">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Nom *
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder="Votre nom"
-                  />
-                </div>
-                <div className="transform hover:scale-105 transition-all duration-300">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder="votre@email.com"
-                  />
-                </div>
-              </div>
-              
-              <div className="transform hover:scale-105 transition-all duration-300">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Sujet *
-                </label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
-                  <option>Développement web</option>
-                  <option>Design & UX/UI</option>
-                  <option>Conseil numérique</option>
-                  <option>Abonnement</option>
-                  <option>Autre</option>
-                </select>
-              </div>
-              
-              <div className="transform hover:scale-105 transition-all duration-300">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea 
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Décrivez votre projet en détail..."
-                ></textarea>
-              </div>
-              
-              <button 
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 group"
-              >
-                <Send size={20} className="group-hover:translate-x-1 transition-transform" />
-                Envoyer le message
-              </button>
-            </form>
+            <ContactForm />
           </div>
+        </div>
+
+        {/* Appointment Section */}
+        <div className="animate-fade-in">
+          <AppointmentForm />
         </div>
       </div>
     </section>
