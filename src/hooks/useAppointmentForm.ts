@@ -18,7 +18,8 @@ export const useAppointmentForm = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      // Save to database
+      const { error: dbError } = await supabase
         .from('appointments')
         .insert([
           {
@@ -33,8 +34,27 @@ export const useAppointmentForm = () => {
           }
         ]);
 
-      if (error) {
-        throw error;
+      if (dbError) {
+        throw dbError;
+      }
+
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime,
+          message: formData.message,
+          type: 'appointment'
+        }
+      });
+
+      if (emailError) {
+        console.error('Email sending error:', emailError);
+        // Don't throw here - the appointment submission was successful even if email failed
       }
 
       toast.success('Rendez-vous demandé avec succès !', {

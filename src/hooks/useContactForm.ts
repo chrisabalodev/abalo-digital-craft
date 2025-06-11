@@ -15,7 +15,8 @@ export const useContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      // Save to database
+      const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -26,8 +27,21 @@ export const useContactForm = () => {
           }
         ]);
 
-      if (error) {
-        throw error;
+      if (dbError) {
+        throw dbError;
+      }
+
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          ...formData,
+          type: 'contact'
+        }
+      });
+
+      if (emailError) {
+        console.error('Email sending error:', emailError);
+        // Don't throw here - the form submission was successful even if email failed
       }
 
       toast.success('Message envoyé avec succès !', {
